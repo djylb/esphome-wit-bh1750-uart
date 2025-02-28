@@ -9,6 +9,7 @@ Add the following to your ESPHome YAML:
 ```yaml
 external_components:
   - source: github://djylb/esphome-wit-bh1750-uart
+    #refresh: 0s
 
 uart:
   id: uart_bus
