@@ -18,8 +18,5 @@ uart:
 sensor:
   - platform: wit_bh1750_uart
     name: "Light Intensity"
-    unit_of_measurement: "lx"
-    accuracy_decimals: 1
-    device_class: illuminance
     update_interval: 0s
 ```
