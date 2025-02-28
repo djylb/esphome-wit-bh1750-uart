@@ -8,13 +8,11 @@ from esphome.const import (
     ICON_BRIGHTNESS_5,
 )
 
-# 定义命名空间
 wit_bh1750_uart_ns = cg.esphome_ns.namespace("wit_bh1750_uart")
 CustomLightSensorUART = wit_bh1750_uart_ns.class_(
     "CustomLightSensorUART", cg.Component, uart.UARTDevice, sensor.Sensor
 )
 
-# 传感器配置
 CONFIG_SCHEMA = sensor.sensor_schema(
     CustomLightSensorUART,
     unit_of_measurement=UNIT_LUX,
@@ -22,7 +20,7 @@ CONFIG_SCHEMA = sensor.sensor_schema(
     device_class=DEVICE_CLASS_ILLUMINANCE,
     state_class=STATE_CLASS_MEASUREMENT,
     accuracy_decimals=1,
-    update_interval="0s"
+    update_interval="0s",
 ).extend(
     cv.COMPONENT_SCHEMA
 ).extend(

@@ -13,13 +13,13 @@ class CustomLightSensorUART : public esphome::Component, public esphome::uart::U
 
   void setup() override {
     buffer_index_ = 0;
-    last_read_ = millis();
     value_sum_ = 0;
     value_count_ = 0;
+    last_read_ = millis();
   }
 
   void loop() override {
-    const uint32_t TIMEOUT_MS = 2000;  // 2秒超时，如果没有新数据，推送已有数据
+    const uint32_t TIMEOUT_MS = 2000;  // 2秒超时
     const int MIN_COUNT = 3;  // 最少3次平均
 
     if (millis() - last_read_ > TIMEOUT_MS && value_count_ > 0) {
@@ -31,7 +31,7 @@ class CustomLightSensorUART : public esphome::Component, public esphome::uart::U
       last_read_ = millis();
 
       if (c == 'L') {
-        buffer_index_ = 0;  // 每次L开头重置
+        buffer_index_ = 0;
       }
 
       if (buffer_index_ < sizeof(buffer_) - 1) {
@@ -59,7 +59,7 @@ class CustomLightSensorUART : public esphome::Component, public esphome::uart::U
       if (value >= 0 && value <= 65536) {
         value_sum_ += value;
         value_count_++;
-        if (value_count_ >= 3) {  // 采集3次以上，立即推送
+        if (value_count_ >= 3) {
           publish_average_and_reset();
         }
       }
