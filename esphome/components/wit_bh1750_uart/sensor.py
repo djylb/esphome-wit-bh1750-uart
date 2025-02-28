@@ -21,6 +21,8 @@ CONFIG_SCHEMA = sensor.sensor_schema(
     icon=ICON_BRIGHTNESS_5,
     device_class=DEVICE_CLASS_ILLUMINANCE,
     state_class=STATE_CLASS_MEASUREMENT,
+    accuracy_decimals=1,
+    update_interval="0s"
 ).extend(
     cv.COMPONENT_SCHEMA
 ).extend(
