@@ -20,3 +20,6 @@ sensor:
   - platform: wit_bh1750_uart
     name: "Light Intensity"
 ```
+
+## Links
+[BH1750](https://wit-motion.yuque.com/wumwnr/docs/gpcalx9sxigkkual) 
