@@ -18,5 +18,5 @@ uart:
 sensor:
   - platform: wit_bh1750_uart
     name: "Light Intensity"
-    update_interval: 1s
+    update_interval: 0s
 ```
